@@ -1,0 +1,52 @@
+- name: authentik | Create app directories
+  file:
+    path: /srv/{{ item }}
+    state: directory
+    owner: "1000"
+    group: "1000"
+    mode: 0644
+  loop:
+    - authentik/media
+    - authentik/backups
+    - authentik/certs
+- name: authentik | Download compose
+  get_url:
+    url: https://raw.githubusercontent.com/goauthentik/authentik/version/{{ authentik_version }}/docker-compose.yml
+    dest: /srv/authentik
+- name: authentik | Copy override file
+  copy:
+    src: ./files/docker-compose.override.yml
+    dest: /srv/authentik/docker-compose.override.yml
+    owner: root
+    group: root
+    mode: 0640
+- name: authentik | Temp settings to pre-pull
+  copy:
+    dest: /srv/authentik/.env
+    owner: root
+    group: root
+    mode: 0644
+    content: |
+      PG_PASS=foo
+- name: authentik | Compose pre-pull
+  docker_compose:
+    project_src: /srv/authentik
+    pull: yes
+- name: authentik | Compose stop
+  docker_compose:
+    project_src: /srv/authentik
+    state: absent
+    remove_volumes: yes
+- name: authentik | Remove Temp settings to pre-pull
+  file:
+    path: /srv/authentik/.env
+    state: absent
+- name: authentik | Copy script wrapper
+  copy:
+    dest: /usr/bin/{{ item }}
+    src: ./files/scripts/{{ item }}
+    owner: root
+    group: root
+    mode: 0755
+  loop:
+    - ak

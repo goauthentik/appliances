@@ -1,0 +1,34 @@
+---
+name: Build (DigitalOcean)
+
+on:
+  push:
+
+jobs:
+  packer-digitalocean:
+    runs-on: ubuntu-latest
+    name: packer-digitalocean
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install ansible
+        run: |
+          pip install pipenv
+          pipenv sync
+          ./vendor/ansible-wrapper.sh --version
+      - name: Install ansible roles
+        run: |
+          pipenv run ansible-galaxy install -p ./roles -r requirements.yml --verbose
+      - name: Packer init
+        run: packer init .
+      - name: Packer validate
+        run: packer validate -syntax-only .
+      - name: Packer build
+        run: packer build -color=false -on-error=abort .
+        env:
+          AUTHENTIK_VERSION: 2021.12.2
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}

@@ -1,0 +1,19 @@
+- hosts: all
+
+  vars:
+    pip_install_packages:
+      - name: docker
+      - name: docker-compose
+    docker_install_compose: true
+    docker_daemon_options:
+      live-restore: true
+      log-opts:
+        max-size: "100m"
+  pre_tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker
+    - goauthentik.appliance

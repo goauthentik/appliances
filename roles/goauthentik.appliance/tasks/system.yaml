@@ -1,0 +1,26 @@
+- name: authentik | Install pwgen
+  apt:
+    pkg: pwgen
+- name: authentik | Create directories
+  file:
+    path: /srv/{{ item }}
+    state: directory
+    owner: root
+    group: root
+    mode: 0644
+  loop:
+    - authentik/appliance
+- name: authentik | Create motd
+  copy:
+    src: ./files/update-motd.d/99-one-click
+    dest: /etc/update-motd.d/99-one-click
+    owner: root
+    group: root
+    mode: 0755
+- name: authentik | Create onboot script
+  template:
+    src: ./templates/per-instance/001_onboot
+    dest: /var/lib/cloud/scripts/per-instance/001_onboot
+    owner: root
+    group: root
+    mode: 0755

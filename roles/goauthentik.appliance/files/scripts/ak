@@ -1,0 +1,53 @@
+#!/bin/bash -e
+function log() {
+    echo "▶ $@"
+}
+
+function prefixwith {
+    local prefix="  ▶ "
+    shift
+    "$@" > >(sed "s/^/$prefix: /") 2> >(sed "s/^/$prefix (err): /" >&2)
+}
+
+function in_continer() {
+    docker exec -it authentik_server_1 ak $@
+}
+
+function appliance() {
+    # To remove 'appliance' part of command
+    shift
+    local command="$1"
+    shift
+    if [[ "$command" == "upgrade" ]]; then
+        appliance_upgrade $@
+    elif [[ "$command" == "start" ]]; then
+        cd /srv/authentik
+        docker-compose up -d
+    elif [[ "$command" == "stop" ]]; then
+        cd /srv/authentik
+        docker-compose down
+    else
+        echo "authentik appliance management."
+        echo
+        echo "Commands:"
+        echo "upgrade   Upgrades the appliance to the latest available version."
+        echo
+    fi
+}
+
+function appliance_upgrade() {
+    log "Creating backup..."
+    in_continer "backup"
+    cd /srv/authentik/
+    wget https://goauthentik.io/docker-compose.yml -O docker-compose.yml
+    log "Pulling new images..."
+    prefixwith "docker-compose pull -q"
+    log "Restarting..."
+    prefixwith "docker-compose up -d"
+}
+
+if [[ "$1" == "appliance" ]]; then
+    appliance $@
+else
+    in_continer $@
+fi

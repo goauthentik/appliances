@@ -1,0 +1,6 @@
+---
+roles:
+  - name: geerlingguy.pip
+    version: 2.1.0
+  - name: geerlingguy.docker
+    version: 4.1.1
