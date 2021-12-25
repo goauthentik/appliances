@@ -1,2 +1,2 @@
 #!/bin/bash -x
-pipenv run ansible-playbook "$@"
+poetry run ansible-playbook "$@"

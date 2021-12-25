@@ -17,12 +17,12 @@ jobs:
           python-version: '3.x'
       - name: Install ansible
         run: |
-          pip install pipenv
-          pipenv sync
+          pip install poetry
+          poetry install
           ./vendor/ansible-wrapper.sh --version
       - name: Install ansible roles
         run: |
-          pipenv run ansible-galaxy install -p ./roles -r requirements.yml --verbose
+          poetry run ansible-galaxy install -p ./roles -r requirements.yml --verbose
       - name: Packer init
         run: packer init .
       - name: Packer validate
