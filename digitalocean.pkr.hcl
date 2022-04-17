@@ -20,7 +20,7 @@ variable "authentik_version" {
 
 locals {
   timestamp  = regex_replace(timestamp(), "[- TZ:]", "")
-  image_name = "authentik-${replace(var.authentik_version, ".", "-")}-snapshot-${local.timestamp}"
+  image_name = "authentik-${replace(var.authentik_version, ".", "-")}"
 }
 
 source "digitalocean" "build_droplet" {
@@ -29,7 +29,7 @@ source "digitalocean" "build_droplet" {
   region        = "nyc3"
   size          = "s-1vcpu-2gb"
   snapshot_name = local.image_name
-  droplet_name  = "authentik-${replace(var.authentik_version, ".", "-")}-build"
+  droplet_name  = "authentik-${replace(var.authentik_version, ".", "-")}-build-${local.timestamp}"
   ssh_username  = "root"
 }
 

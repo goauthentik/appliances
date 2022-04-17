@@ -28,7 +28,7 @@ jobs:
       - name: Packer validate
         run: packer validate -syntax-only .
       - name: Packer build
-        run: packer build -color=false -on-error=abort .
+        run: packer build -color=false -on-error=abort -force .
         env:
           AUTHENTIK_VERSION: 2022.4.1
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
