@@ -12,7 +12,6 @@ To finish setting up your authentik instance, open http://$myip/if/flow/initial-
 
 On the server:
   * The generated credentials are saved under /srv/authentik/.env
-  * Backups are saved under /srv/authentik/backups
   * To upgrade authentik, run "ak appliance upgrade"
 
 ********************************************************************************

@@ -7,7 +7,6 @@
     mode: 0644
   loop:
     - authentik/media
-    - authentik/backups
     - authentik/certs
 - name: authentik | Download compose
   get_url:

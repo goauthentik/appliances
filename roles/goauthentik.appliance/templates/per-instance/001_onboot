@@ -10,4 +10,3 @@ echo "AUTHENTIK_ERROR_REPORTING__ENABLED=true" >> .env
 echo "AUTHENTIK_ERROR_REPORTING__ENVIRONMENT={{ appliance_vendor }}" >> .env
 
 ak appliance start
-ak backup

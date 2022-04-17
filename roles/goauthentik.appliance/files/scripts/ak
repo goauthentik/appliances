@@ -36,8 +36,6 @@ function appliance() {
 }
 
 function appliance_upgrade() {
-    log "Creating backup..."
-    in_continer "backup"
     cd /srv/authentik/
     wget https://goauthentik.io/docker-compose.yml -O docker-compose.yml
     log "Pulling new images..."
