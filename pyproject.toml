@@ -9,7 +9,7 @@ python = "^3.10"
 ansible = "^6.1.0"
 
 [tool.poetry.dev-dependencies]
-ansible-lint = "^6.3.0"
+ansible-lint = "^6.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
