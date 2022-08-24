@@ -1,13 +1,13 @@
 [[package]]
 name = "ansible"
-version = "6.2.0"
+version = "6.3.0"
 description = "Radically simple IT automation"
 category = "main"
 optional = false
 python-versions = ">=3.8"
 
 [package.dependencies]
-ansible-core = ">=2.13.2,<2.14.0"
+ansible-core = ">=2.13.3,<2.14.0"
 
 [[package]]
 name = "ansible-compat"
@@ -23,12 +23,12 @@ PyYAML = "*"
 subprocess-tee = ">=0.3.5"
 
 [package.extras]
-test = ["pytest-plus", "pytest-mock", "pytest-markdown", "pytest", "pip-tools", "flaky", "coverage"]
-docs = ["myst-parser", "sphinx-ansible-theme", "sphinx (>=4.2.0,<5.0)", "sphinx-autobuild (>=0.7.1,<1.0)"]
+docs = ["myst-parser", "sphinx (>=4.2.0,<5.0)", "sphinx-ansible-theme", "sphinx-autobuild (>=0.7.1,<1.0)"]
+test = ["coverage", "flaky", "pip-tools", "pytest", "pytest-markdown", "pytest-mock", "pytest-plus"]
 
 [[package]]
 name = "ansible-core"
-version = "2.13.2"
+version = "2.13.3"
 description = "Radically simple IT automation"
 category = "main"
 optional = false
@@ -64,7 +64,7 @@ yamllint = ">=1.25.0"
 
 [package.extras]
 docs = ["myst-parser (>=0.16.1)", "pipdeptree (>=2.2.1)", "sphinx (>=4.4.0)", "sphinx-ansible-theme (>=0.9.1)", "sphinx-rtd-theme (>=0.5.2,<1.0.0)", "sphinxcontrib-apidoc (>=0.3.0)", "sphinxcontrib-programoutput2 (>=2.0a1)", "yamllint (>=1.26.3)"]
-test = ["coverage (>=6.3)", "tomli (>=2.0.0)", "flaky (>=3.7.0)", "pytest (>=6.0.1)", "pytest-cov (>=2.10.1)", "pytest-plus (>=0.2)", "pytest-xdist (>=2.1.0)", "psutil", "black", "mypy", "pylint", "flake8"]
+test = ["black", "coverage (>=6.3)", "flake8", "flaky (>=3.7.0)", "mypy", "psutil", "pylint", "pytest (>=6.0.1)", "pytest-cov (>=2.10.1)", "pytest-plus (>=0.2)", "pytest-xdist (>=2.1.0)", "tomli (>=2.0.0)"]
 
 [[package]]
 name = "attrs"
@@ -75,10 +75,10 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [package.extras]
-dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "zope.interface", "furo", "sphinx", "sphinx-notfound-page", "pre-commit", "cloudpickle"]
-docs = ["furo", "sphinx", "zope.interface", "sphinx-notfound-page"]
-tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "zope.interface", "cloudpickle"]
-tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "cloudpickle"]
+dev = ["cloudpickle", "coverage[toml] (>=5.0.2)", "furo", "hypothesis", "mypy", "pre-commit", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "six", "sphinx", "sphinx-notfound-page", "zope.interface"]
+docs = ["furo", "sphinx", "sphinx-notfound-page", "zope.interface"]
+tests = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "six", "zope.interface"]
+tests_no_zope = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "six"]
 
 [[package]]
 name = "bracex"
@@ -116,7 +116,7 @@ optional = false
 python-versions = "*"
 
 [package.extras]
-test = ["hypothesis (==3.55.3)", "flake8 (==3.7.8)"]
+test = ["flake8 (==3.7.8)", "hypothesis (==3.55.3)"]
 
 [[package]]
 name = "cryptography"
@@ -131,11 +131,11 @@ cffi = ">=1.12"
 
 [package.extras]
 docs = ["sphinx (>=1.6.5,!=1.8.0,!=3.1.0,!=3.1.1)", "sphinx-rtd-theme"]
-docstest = ["pyenchant (>=1.6.11)", "twine (>=1.12.0)", "sphinxcontrib-spelling (>=4.0.1)"]
+docstest = ["pyenchant (>=1.6.11)", "sphinxcontrib-spelling (>=4.0.1)", "twine (>=1.12.0)"]
 pep8test = ["black", "flake8", "flake8-import-order", "pep8-naming"]
 sdist = ["setuptools_rust (>=0.11.4)"]
 ssh = ["bcrypt (>=3.1.5)"]
-test = ["pytest (>=6.2.0)", "pytest-cov", "pytest-subtests", "pytest-xdist", "pretend", "iso8601", "pytz", "hypothesis (>=1.11.4,!=3.79.2)"]
+test = ["hypothesis (>=1.11.4,!=3.79.2)", "iso8601", "pretend", "pytest (>=6.2.0)", "pytest-cov", "pytest-subtests", "pytest-xdist", "pytz"]
 
 [[package]]
 name = "enrich"
@@ -149,7 +149,7 @@ python-versions = ">=3.6"
 rich = ">=9.5.1"
 
 [package.extras]
-test = ["mock (>=3.0.5)", "pytest-cov (>=2.7.1)", "pytest-mock (>=3.3.1)", "pytest-plus", "pytest-xdist (>=1.29.0)", "pytest (>=5.4.0)"]
+test = ["mock (>=3.0.5)", "pytest (>=5.4.0)", "pytest-cov (>=2.7.1)", "pytest-mock (>=3.3.1)", "pytest-plus", "pytest-xdist (>=1.29.0)"]
 
 [[package]]
 name = "filelock"
@@ -325,7 +325,7 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-test = ["pytest (>=6.2.5)", "pytest-xdist (>=2.3.0)", "pytest-plus (>=0.2)", "pytest-cov (>=2.12.1)", "molecule (>=3.4.0)", "mock (>=4.0.3)", "enrich (>=1.2.6)"]
+test = ["enrich (>=1.2.6)", "mock (>=4.0.3)", "molecule (>=3.4.0)", "pytest (>=6.2.5)", "pytest-cov (>=2.12.1)", "pytest-plus (>=0.2)", "pytest-xdist (>=2.3.0)"]
 
 [[package]]
 name = "wcmatch"
@@ -353,20 +353,20 @@ pyyaml = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "5f8e5c6fbac3b8fa55fe15ece15497318ad21ff0e71e151449b01720e7b26ae2"
+content-hash = "08f2c837e9ced9ebe321788308362dde14abf9672192a215479ae000ddcc8e2d"
 
 [metadata.files]
 ansible = [
-    {file = "ansible-6.2.0-py3-none-any.whl", hash = "sha256:20625109c4e9c79e9e23bff6d1e32a780d13935007369111261a7ddfd3cf75b1"},
-    {file = "ansible-6.2.0.tar.gz", hash = "sha256:bdaf2b2fd926ff189fbde2fefe7234733f32c36fc413033fa5d93945fbdc06a6"},
+    {file = "ansible-6.3.0-py3-none-any.whl", hash = "sha256:74f5c3bd7441dcdb7cace8a3c2a44b0be7002be346bf8137e5c67fd8ba743fd3"},
+    {file = "ansible-6.3.0.tar.gz", hash = "sha256:d5fa9fc15a8d45c8d5247a9645b0b48f995d735b12c4da655666d48506273526"},
 ]
 ansible-compat = [
     {file = "ansible-compat-2.2.0.tar.gz", hash = "sha256:676db8ec0449d1f07038625b8ebb8ceef5f8ad3a1af3ee82d4ed66b9b04cb6fa"},
     {file = "ansible_compat-2.2.0-py3-none-any.whl", hash = "sha256:ce69a67785ae96e8962794a47494339991a0ae242ab5dd14a76ee2137d09072e"},
 ]
 ansible-core = [
-    {file = "ansible-core-2.13.2.tar.gz", hash = "sha256:b779d0e55a97717c0ee5e86b486aa67c07c2809ef477be2ac84ad091a8dd2ddb"},
-    {file = "ansible_core-2.13.2-py3-none-any.whl", hash = "sha256:331b869cf3bf9bab875f62b9a8586257bbcfb95b1db6c8d43424d70804996143"},
+    {file = "ansible-core-2.13.3.tar.gz", hash = "sha256:eec5042530ff1c0c8d13a36fa047c6dd9157efeefd464a856b4ce38be4cd1988"},
+    {file = "ansible_core-2.13.3-py3-none-any.whl", hash = "sha256:449dbcfbfe18e4f23dec0c29b9aa60d76d205657a8e136484f4edea49faf7614"},
 ]
 ansible-lint = [
     {file = "ansible-lint-6.5.0.tar.gz", hash = "sha256:5efc0d8dc67501f4ac550f84a4eaca1b25c94732ec3f8c8e63971a256c961282"},
