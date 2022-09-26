@@ -17,6 +17,8 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install ansible
+        env:
+          DO_API_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
         run: |
           pip install poetry
           poetry install
