@@ -23,7 +23,7 @@ jobs:
           pip install poetry
           poetry install
           ./vendor/ansible-wrapper.sh --version
-          ./vendor/ansible-wrapper.sh pre-build/digitalocean/site.yaml
+          ./vendor/ansible-wrapper.sh vendor/digitalocean/pre-build.yaml
       - name: Install ansible roles
         run: |
           poetry run ansible-galaxy install -p ./roles -r requirements.yml --verbose
