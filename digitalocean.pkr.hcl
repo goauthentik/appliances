@@ -31,7 +31,7 @@ source "digitalocean" "build_droplet" {
   snapshot_name = local.image_name
   droplet_name  = "authentik-${replace(var.authentik_version, ".", "-")}-build-${local.timestamp}"
   ssh_username  = "root"
-  tags          = ["authentik", "build", var.authentik_version]
+  tags          = ["authentik", "build", replace(var.authentik_version, ".", "-")]
 }
 
 build {
