@@ -5,6 +5,6 @@
 ---
 
 [![Join Discord](https://img.shields.io/discord/809154715984199690?label=Discord&style=for-the-badge)](https://goauthentik.io/discord)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/goauthentik/appliances/packer-digitalocean?label=core%20build&style=for-the-badge)](https://github.com/goauthentik/appliances/actions/workflows/build-do.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/goauthentik/appliances/Build%20(DigitalOcean)?style=for-the-badge)](https://github.com/goauthentik/appliances/actions/workflows/build-do.yml)
 ![Latest version](https://img.shields.io/docker/v/beryju/authentik?sort=semver&style=for-the-badge)
 [![](https://img.shields.io/badge/Help%20translate-transifex-blue?style=for-the-badge)](https://www.transifex.com/beryjuorg/authentik/)

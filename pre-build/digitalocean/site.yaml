@@ -1,0 +1,13 @@
+- hosts: localhost
+  tasks:
+    - name: List all snapshots
+      community.digitalocean.digital_ocean_image_info:
+        image_type: private
+      register: images
+    - name: Delete snapshot
+      community.digitalocean.digital_ocean_snapshot:
+        state: absent
+        snapshot_type: volume
+        snapshot_id: "{{ item.id}}"
+      register: result
+      loop: "{{ images.data }}"

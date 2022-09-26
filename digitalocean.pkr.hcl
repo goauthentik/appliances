@@ -9,13 +9,13 @@ packer {
 
 variable "do_token" {
   type      = string
-  default   = "${env("DIGITALOCEAN_TOKEN")}"
+  default   = env("DIGITALOCEAN_TOKEN")
   sensitive = true
 }
 
 variable "authentik_version" {
   type    = string
-  default = "${env("AUTHENTIK_VERSION")}"
+  default = env("AUTHENTIK_VERSION")
 }
 
 locals {
@@ -31,6 +31,7 @@ source "digitalocean" "build_droplet" {
   snapshot_name = local.image_name
   droplet_name  = "authentik-${replace(var.authentik_version, ".", "-")}-build-${local.timestamp}"
   ssh_username  = "root"
+  tags          = ["authentik", "build", var.authentik_version]
 }
 
 build {
