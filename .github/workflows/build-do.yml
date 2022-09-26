@@ -3,6 +3,8 @@ name: Build (DigitalOcean)
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   packer-digitalocean:
@@ -10,8 +12,7 @@ jobs:
     name: packer-digitalocean
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -23,12 +24,9 @@ jobs:
       - name: Install ansible roles
         run: |
           poetry run ansible-galaxy install -p ./roles -r requirements.yml --verbose
-      - name: Packer init
-        run: packer init .
-      - name: Packer validate
-        run: packer validate -syntax-only .
-      - name: Packer build
-        run: packer build -color=false -on-error=abort -force .
+      - run: packer init .
+      - run: packer validate -syntax-only .
+      - run: packer build -color=false -on-error=abort -force .
         env:
           AUTHENTIK_VERSION: 2022.4.1
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
