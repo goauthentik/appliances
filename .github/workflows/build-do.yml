@@ -27,9 +27,12 @@ jobs:
       - name: Install ansible roles
         run: |
           poetry run ansible-galaxy install -p ./roles -r requirements.yml --verbose
+      - uses: hashicorp/setup-packer@main
+        with:
+          version: "latest"
       - run: packer init .
       - run: packer validate -syntax-only .
-      - run: packer build -color=false -on-error=abort -force .
+      - run: packer build -color=false -force .
         env:
           AUTHENTIK_VERSION: 2022.12.1
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
