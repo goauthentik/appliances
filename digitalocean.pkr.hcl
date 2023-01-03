@@ -43,6 +43,7 @@ build {
   provisioner "ansible" {
     playbook_file = "./site.yaml"
     command       = "./vendor/ansible-wrapper.sh"
+    use_proxy     = false
     extra_arguments = [
       "--diff",
       "-e", "authentik_version=${var.authentik_version}",
