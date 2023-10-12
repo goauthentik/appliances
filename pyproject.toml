@@ -6,7 +6,7 @@ authors = ["Jens Langhammer <jens.langhammer@beryju.org>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-ansible = "^8.4.0"
+ansible = "^8.5.0"
 
 [tool.poetry.dev-dependencies]
 ansible-lint = "^6.8.7"
